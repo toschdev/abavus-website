@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abavus — Cryptographic identity &amp; provenance for AI agents</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="logo">◼︎</span>
+        <span class="name">abavus</span>
+      </div>
+      <div class="nav-links">
+        <a href="#why">Why</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#cli">CLI</a>
+        <a href="https://github.com/toschdev/abavus" target="_blank">GitHub</a>
+      </div>
+      <a class="cta" href="#quickstart">Get started</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="eyebrow">PROVENANCE • AUDIT • TRUST</div>
+      <h1>Cryptographic identity<br/>and provenance for AI agents.</h1>
+      <p class="lead">Every action your agent takes is hashed, signed, and hash-chained. An immutable, verifiable audit trail that proves exactly what happened — and what didn't.</p>
+      <div class="hero-ctas">
+        <a class="btn primary" href="#quickstart">Install &amp; run in 2 minutes</a>
+        <a class="btn" href="#viewer">See the dashboard</a>
+      </div>
+      <div class="meta">Local-first • Ed25519 signatures • SQLite • Works with Grok, Cursor &amp; OpenClaw</div>
+    </div>
+  </header>
+
+  <section id="why" class="section alt">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2>Why Abavus?</h2>
+          <p>Today's agents operate on social trust: you believe them because they sound reasonable. That doesn't scale for audits, compliance, debugging production agents, or multi-agent systems.</p>
+          <p><strong>Abavus makes trust cryptographic.</strong></p>
+        </div>
+        <ul class="bullets">
+          <li><strong>Prove</strong> what an agent did with signed, hash-chained logs</li>
+          <li><strong>Search</strong> complete interaction history (full-text + semantic)</li>
+          <li><strong>Verify</strong> the integrity of the entire chain at any time</li>
+          <li><strong>Query</strong> by action, session, time, tool, or content</li>
+          <li><strong>Import</strong> existing OpenClaw sessions; auto-log from Grok hooks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="container">
+      <h2 class="center">Features</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">🔐</div>
+          <h3>Ed25519 Signatures</h3>
+          <p>Every entry is cryptographically signed by your agent's identity. Tamper detection is built-in.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⛓️</div>
+          <h3>Hash Chain</h3>
+          <p>Each record links to the previous via SHA-256. Any rewrite breaks the chain and is immediately detectable.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔍</div>
+          <h3>Powerful Search</h3>
+          <p>Full-text search across everything. Optional semantic search with Ollama embeddings for natural language queries.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>Session Intelligence</h3>
+          <p>Automatic session timelines, tool usage stats, token counts, cost tracking, and activity summaries.</p>
+        </div>
+        <div class="card">
+          <div class="icon">💾</div>
+          <h3>SQLite Storage</h3>
+          <p>Fast local queries, portable single-file DB (~/.abavus/chronicle.db). Export to JSONL anytime.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🪝</div>
+          <h3>Zero-friction Logging</h3>
+          <p>Install Grok/Cursor hooks once. Every tool call, user message, and LLM turn is captured automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="viewer" class="section alt">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2>Human-readable dashboard</h2>
+          <p>The local web viewer turns raw cryptographic logs into an explorable audit experience:</p>
+          <ul>
+            <li>Overview stats + pending spool</li>
+            <li>Rich session list with turns, tokens, cost</li>
+            <li>Expandable timeline with thinking, tool arguments &amp; results</li>
+            <li>Global full-text search across your entire history</li>
+            <li>One-click export and copyable IDs</li>
+            <li>Chain verification at a glance</li>
+          </ul>
+          <p class="small">Run <code>npm run viewer</code> → opens at http://127.0.0.1:3847</p>
+        </div>
+        <div class="viewer-mock">
+          <div class="mock-header">Abavus Chronicle • 19.5k entries • 41.5 MB</div>
+          <div class="mock-stats">
+            <div class="mstat"><div>19,531</div><div>entries</div></div>
+            <div class="mstat"><div>9.1k</div><div>llm.turn</div></div>
+            <div class="mstat"><div>7.4k</div><div>tool.call</div></div>
+          </div>
+          <div class="mock-timeline">
+            <div class="mev">💬 User: Read HEARTBEAT.md…</div>
+            <div class="mev">🧠 Assistant (opus-4-5) · 17k tok · thinking</div>
+            <div class="mev">🔧 read · path: HEARTBEAT.md</div>
+            <div class="mev">🔧 exec · command: …</div>
+          </div>
+          <div class="mock-foot">✓ Chain valid • 19,531 entries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <div class="container">
+      <h2 class="center">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div><strong>Create identity</strong><br/><code>abavus init</code></div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div><strong>Install hooks</strong><br/><code>abavus hook:install-grok</code><br/><span class="tiny">(restart your agent)</span></div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div><strong>Work as normal</strong><br/>Every tool call, prompt, and response is spooled then flushed into the signed chronicle.</div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div><strong>Inspect &amp; verify</strong><br/><code>abavus sessions</code>, <code>abavus session &lt;id&gt;</code>, <code>abavus verify</code>, or open the dashboard.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quickstart" class="section alt">
+    <div class="container">
+      <h2>Quick start</h2>
+      <pre class="code"><code>git clone https://github.com/toschdev/abavus.git
+cd abavus
+npm install
+
+# Create your agent identity
+node cli/abavus.js init
+
+# Auto-log every Grok / Cursor action
+node cli/abavus.js hook:install-grok
+
+# Import historical OpenClaw data (optional)
+node cli/abavus.js import
+
+# Explore
+node cli/abavus.js stats
+node cli/abavus.js sessions
+node cli/abavus.js session &lt;id-prefix&gt;
+
+# Beautiful local dashboard
+npm run viewer
+# → http://127.0.0.1:3847</code></pre>
+
+      <p class="small">Data lives in <code>~/.abavus/</code> (keys + chronicle.db). Everything is yours.</p>
+    </div>
+  </section>
+
+  <section id="cli" class="section">
+    <div class="container">
+      <h2>CLI highlights</h2>
+      <div class="cli-grid">
+        <div>
+          <h4>Identity</h4>
+          <code>init</code> <code>id</code>
+        </div>
+        <div>
+          <h4>Chronicle</h4>
+          <code>stats</code> <code>verify</code> <code>recent</code> <code>search</code>
+        </div>
+        <div>
+          <h4>Sessions</h4>
+          <code>sessions</code> <code>session &lt;id&gt;</code> <code>sessions:stats</code>
+        </div>
+        <div>
+          <h4>Advanced</h4>
+          <code>ask "natural language query"</code><br/>
+          <code>embed</code> (semantic) • <code>watch</code> • <code>rate</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-final">
+    <div class="container center">
+      <h2>Ready to make your agents accountable?</h2>
+      <p>Clone the repo, create an identity, install the hooks, and never wonder “what did it actually do?” again.</p>
+      <a class="btn primary large" href="https://github.com/toschdev/abavus" target="_blank">View on GitHub</a>
+      <div class="foot-note">AGPL-3.0 licensed • Copyright (C) 2026 Tobias Schwarz (Tosch) • Built by Thomas (AI) &amp; Tosch (Human) • <a href="https://abavus.ai">abavus.ai</a></div>
+    </div>
+  </section>
+
+  <script>
+    // tiny smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
