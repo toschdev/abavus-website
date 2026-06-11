@@ -8,6 +8,8 @@ This is the official marketing website for [Abavus](https://github.com/toschdev/
 - `style.css` — Styles (dark, modern, self-contained)
 - `.nojekyll` — Prevents GitHub Pages from running Jekyll
 
+The site prominently features **Personas** — the powerful new capability to create forkable AI personalities with their own cryptographic identities, strengths, knowledge bases, and verifiable histories (e.g. `abavus create persona researcher`).
+
 ## Local Development
 
 Simply open the site in your browser:

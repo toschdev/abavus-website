@@ -17,6 +17,7 @@
         <a href="#why">Why</a>
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
+        <a href="#personas">Personas</a>
         <a href="#cli">CLI</a>
         <a href="https://github.com/toschdev/abavus" target="_blank">GitHub</a>
       </div>
@@ -153,6 +154,30 @@
     </div>
   </section>
 
+  <section id="personas" class="section">
+    <div class="container">
+      <h2 class="center">Rich Personas</h2>
+      <p>Create distinct AI personalities with their own cryptographic identity, strengths, knowledge, and fully verifiable history. Fork them while preserving lineage through snapshots.</p>
+      <div class="cli-grid">
+        <div>
+          <h4>Create</h4>
+          <code>abavus create persona researcher</code><br>
+          <code>--strengths "analysis,fact-checking"</code>
+        </div>
+        <div>
+          <h4>Manage &amp; Inspect</h4>
+          <code>abavus personas</code><br>
+          <code>abavus persona researcher</code>
+        </div>
+        <div>
+          <h4>Fork with provenance</h4>
+          <code>abavus fork persona researcher as senior-researcher</code>
+        </div>
+      </div>
+      <p class="small">All actions are signed under the persona's identity. Perfect for specialized, long-running agents with auditable expertise.</p>
+    </div>
+  </section>
+
   <section id="quickstart" class="section alt">
     <div class="container">
       <h2>Quick start</h2>
@@ -187,21 +212,25 @@ npm run viewer
       <h2>CLI highlights</h2>
       <div class="cli-grid">
         <div>
-          <h4>Identity</h4>
-          <code>init</code> <code>id</code>
+          <h4>Personas</h4>
+          <code>create persona X</code><br/>
+          <code>personas</code> • <code>persona X</code><br/>
+          <code>fork persona X as Y</code>
         </div>
         <div>
-          <h4>Chronicle</h4>
-          <code>stats</code> <code>verify</code> <code>recent</code> <code>search</code>
+          <h4>Identity &amp; Chronicle</h4>
+          <code>init</code> <code>id</code><br/>
+          <code>stats</code> <code>verify</code> <code>search</code>
         </div>
         <div>
-          <h4>Sessions</h4>
-          <code>sessions</code> <code>session &lt;id&gt;</code> <code>sessions:stats</code>
+          <h4>Sessions &amp; Audit</h4>
+          <code>sessions</code> <code>session &lt;id&gt;</code><br/>
+          <code>abavus session</code> or viewer
         </div>
         <div>
           <h4>Advanced</h4>
-          <code>ask "natural language query"</code><br/>
-          <code>embed</code> (semantic) • <code>watch</code> • <code>rate</code>
+          <code>ask "query"</code> (semantic)<br/>
+          <code>embed</code> • <code>watch</code> • <code>rate</code>
         </div>
       </div>
     </div>
