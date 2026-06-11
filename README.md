@@ -74,9 +74,10 @@ jobs:
 ## License
 
 The Abavus project is licensed under AGPL-3.0.  
+Copyright (C) 2026 Tobias Schwarz (toschdev).  
 This website (marketing material) may be used under the same terms or more permissively for promotional purposes.
 
 ## Related
 
 - Main project: https://github.com/toschdev/abavus
-- Live Abavus site (once deployed): https://abavus.ai (planned)
+- Live Abavus site (once deployed): https://toschdev.github.io/abavus-website (or abavus.ai when configured)
